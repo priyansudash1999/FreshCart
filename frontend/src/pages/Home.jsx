@@ -1,10 +1,11 @@
 import React from 'react'
-import { Header } from '../components'
+import { ExploreMenu, Header } from '../components'
 
 const Home = () => {
   return (
     <div className=''>
       <Header />
+      <ExploreMenu />
     </div>
   )
 }
