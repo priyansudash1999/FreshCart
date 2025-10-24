@@ -4,6 +4,7 @@ import ExploreMenu from "./ExploreMenu";
 import FoodDisplay from "./FoodDisplay";
 import FoodItem from "./FoodItem";
 import Footer from "./Footer";
+import AppDownload from "./AppDownload";
 
 
-export {Navbar, Header, ExploreMenu, FoodDisplay, FoodItem, Footer}
+export {Navbar, Header, ExploreMenu, FoodDisplay, FoodItem, Footer, AppDownload}

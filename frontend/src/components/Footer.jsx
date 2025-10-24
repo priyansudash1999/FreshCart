@@ -21,23 +21,22 @@ const Footer = () => {
         <div className='flex flex-col items-start gap-4'>
           <h2 className='text-xl text-white'>Company</h2>
           <ul>
-            <li className='mb-2 cursor-pointer'>Home</li>
-            <li className='mb-2 cursor-pointer'>About Us</li>
-            <li className='mb-2 cursor-pointer'>Delivery</li>
-            <li className='mb-2 cursor-pointer'>Privacy Policy</li>
+            <li className='mb-1 cursor-pointer'>Home</li>
+            <li className='mb-1 cursor-pointer'>About Us</li>
+            <li className='mb-1 cursor-pointer'>Delivery</li>
+            <li className='mb-1 cursor-pointer'>Privacy Policy</li>
           </ul>
         </div>
 
         <div className='flex flex-col items-start gap-4'>
           <h2 className='text-xl text-white'>Get In Touch</h2>
           <ul>
-            <li>+9194377 97328</li>
+            <li>+1-623-0352-0000</li>
             <li className='cursor-pointer'>contact@freshcart.com</li>
           </ul>
         </div>
       </div>
 
-      {/* Footer Bottom Line */}
       <p className='text-center mt-8 text-sm'>
         © 2025 FreshCart. All rights reserved.
       </p>
