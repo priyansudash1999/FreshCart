@@ -16,16 +16,18 @@ const FoodDisplay = ({category}) => {
         mt-5
         gap-y-7
       ">
-        {food_list.map((item, ind) => (
-          <FoodItem
-            key={ind}
-            id={item._id}
-            name={item.name}
-            description={item.description}
-            price={item.price}
-            image={item.image}
-          />
-        ))}
+        {food_list.map((item, ind) => {
+          if(category === 'All' || category === item.category){
+            return <FoodItem
+              key={ind}
+              id={item._id}
+              name={item.name}
+              description={item.description}
+              price={item.price}
+              image={item.image}
+            />
+          }
+        })}
       </div>
 
     </div>
