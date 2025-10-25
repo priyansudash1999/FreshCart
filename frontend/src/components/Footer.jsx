@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='flex flex-col items-start gap-4'>
           <img src={assets.logo} alt="" />
           <p className='mt-2'>
-            Fast, fresh, and reliable — that’s our promise. © 2025 FoodRush. Crafted with ❤️ for food lovers.
+            Fast, fresh, and reliable — that’s our promise. 
           </p>
           <div className='flex gap-4 mt-3 mr-3'>
             <img src={assets.facebook_icon} alt="" className='cursor-pointer'/>
