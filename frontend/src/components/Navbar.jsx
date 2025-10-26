@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
+import { Link } from "react-router-dom";
 
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home");
@@ -7,11 +8,11 @@ const Navbar = ({setShowLogin}) => {
   return (
     <div className="flex justify-between items-center py-5 px-6 bg-white shadow-sm">
       {/* Logo */}
-      <img
+      <Link to="/"><img
         src={assets.logo}
         alt="logo"
         className="w-[150px] max-[1050px]:w-[130px] max-[900px]:w-[110px]"
-      />
+      /></Link>
 
       {/* Menu Links */}
       <ul className="flex list-none gap-8 text-[#49557e] text-[18px] font-medium cursor-pointer 
@@ -42,7 +43,7 @@ const Navbar = ({setShowLogin}) => {
 
         {/* Basket Icon with Notification Dot */}
         <div className="relative cursor-pointer">
-          <img src={assets.basket_icon} alt="cart" className="h-[28px]" />
+          <Link to="/cart"><img src={assets.basket_icon} alt="cart" className="h-[28px]" /></Link>
           <div className="absolute min-w-[10px] min-h-[10px] bg-orange-500 rounded-full -top-1 -right-1" />
         </div>
 
