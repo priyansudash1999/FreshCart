@@ -11,7 +11,7 @@ const Footer = () => {
           <p className='mt-2'>
             Fast, fresh, and reliable — that’s our promise. 
           </p>
-          <div className='flex gap-4 mt-3 mr-3'>
+          <div className='flex gap-4 mt-9 mr-3 max-[750px]:ml-[150%]'>
             <img src={assets.facebook_icon} alt="" className='cursor-pointer'/>
             <img src={assets.twitter_icon} alt="" className='cursor-pointer'/>
             <img src={assets.linkedin_icon} alt="" className='cursor-pointer'/>

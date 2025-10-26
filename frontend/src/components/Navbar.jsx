@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home");
 
   return (
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
 
         {/* Sign In Button */}
-        <button className="bg-transparent text-[16px] text-[#49557e] border border-[#49557e] px-6 py-2 rounded-full hover:bg-[#49557e] hover:text-white transition duration-300 
+        <button onClick={() => setShowLogin(true)} className="bg-transparent text-[16px] text-[#49557e] border border-[#49557e] px-6 py-2 rounded-full hover:bg-[#49557e] hover:text-white transition duration-300 
                           max-[1050px]:px-4 max-[1050px]:py-[6px] max-[900px]:text-[14px] cursor-pointer">
           Sign In
         </button>
