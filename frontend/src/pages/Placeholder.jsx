@@ -34,12 +34,12 @@ const Placeholder = () => {
             <hr className='mx-0 my-2'/>
             <div className="flex justify-between text-[#555555]">
               <p>Delivery Fee</p>
-              <p>${2}</p>
+              <p>${getCartTotal() === 0 ? 0 : 2}</p>
             </div>
             <hr className='mx-0 my-2'/>
             <div className="flex justify-between text-[#555555]">
               <b>Total</b>
-              <b>${getCartTotal() + 2}</b>
+              <b>${getCartTotal() === 0 ? getCartTotal() : getCartTotal() + 2}</b>
             </div>
           </div>
           <button className='border-none text-white bg-orange-600 w-[200px] px-3 py-2 mb-10 rounded mt-10'>Proceed to Payment</button>

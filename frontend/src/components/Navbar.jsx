@@ -17,9 +17,9 @@ const Navbar = ({setShowLogin}) => {
       {/* Menu Links */}
       <ul className="flex list-none gap-8 text-[#49557e] text-[18px] font-medium cursor-pointer 
                     max-[1050px]:gap-6 max-[1050px]:text-[16px] max-[750px]:hidden">
-        {["home", "menu", "app", "contact"].map((item) => (
+        {["home", "menu", "app", "contact"].map((item, ind) => (
           <li
-            key={item}
+            key={ind}
             onClick={() => setMenu(item)}
             className={`capitalize hover:text-[#ff6600] transition-colors duration-300 ${
               menu === item
