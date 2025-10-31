@@ -4,16 +4,15 @@ import axios from "axios"
 import { toast } from 'react-toastify'
 
 
-const AddProduct = () => {
+const AddProduct = ({url}) => {
 
   
-  const url = "http://localhost:4000"
   const [image, setImage] = useState(false)
   const [data, setData] = useState({
     name: "",
     description: "",
     price: "",
-    category: "Salad "
+    category: "Salad"
   })
 
   const onChangeHandler = (e) => {
@@ -40,7 +39,7 @@ const AddProduct = () => {
         name: "",
         description: "",
         price: "",
-        category: "Salad "
+        category: ""
       })
       setImage(false)
       toast.success(response.data.message)
@@ -71,7 +70,7 @@ const AddProduct = () => {
         <div className="flex gap-6">
           <div className="add-category flex flex-col gap-2">
             <p>Product Category</p>
-            <select name="category" className='max-2-[120px] p-2'>
+            <select onChange={onChangeHandler} value={data.category} name="category" className='max-2-[120px] p-2'>
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Desert">Desert</option>
