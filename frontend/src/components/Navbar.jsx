@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home");
+  const {getCartTotal, token, setToken} = useContext(StoreContext)
+  const naviagate = useNavigate()
+  const logout = () => {
+    localStorage.removeItem('TOKEN')
+    setToken("")
+    naviagate("/")
+  }
 
   return (
     <div className="flex justify-between items-center py-5 px-6 bg-white shadow-sm">
@@ -44,17 +52,40 @@ const Navbar = ({setShowLogin}) => {
         {/* Basket Icon with Notification Dot */}
         <div className="relative cursor-pointer">
           <Link to="/cart"><img src={assets.basket_icon} alt="cart" className="h-[28px]" /></Link>
-          <div className="absolute min-w-[10px] min-h-[10px] bg-orange-500 rounded-full -top-1 -right-1" />
+          <div className={getCartTotal() === 0 ? '' : 'absolute min-w-[10px] min-h-[10px] bg-orange-500 rounded-full -top-1 -right-1'} />
         </div>
-
-        {/* Sign In Button */}
-        <button onClick={() => setShowLogin(true)} className="bg-transparent text-[16px] text-[#49557e] border border-[#49557e] px-6 py-2 rounded-full hover:bg-[#49557e] hover:text-white transition duration-300 
+        {!token ? <button onClick={() => setShowLogin(true)} className="bg-transparent text-[16px] text-[#49557e] border border-[#49557e] px-6 py-2 rounded-full hover:bg-[#49557e] hover:text-white transition duration-300 
                           max-[1050px]:px-4 max-[1050px]:py-[6px] max-[900px]:text-[14px] cursor-pointer">
           Sign In
-        </button>
-      </div>
+        </button> : <div className="relative navbar-profile group">
+                      <img src={assets.profile_icon} alt="" />
 
-      {/* Mobile Menu Button */}
+                      <ul className="
+                        absolute hidden group-hover:flex 
+                        flex-col gap-[10px]
+                        right-0 z-50
+                        bg-[#fff2ef] 
+                        p-[12px_35px]
+                        rounded-[4px] 
+                        border border-orange-500 
+                        outline-2 outline-white
+                        list-none
+                      ">
+                        <li className="flex items-center justify-center gap-2 cursor-pointer hover:text-orange-500">
+                          <img className="w-4" src={assets.bag_icon} alt="" />
+                          <p className="">Orders</p>
+                        </li>
+                        <hr />
+                        <li onClick={logout} className="flex items-center justify-center gap-2 cursor-pointer hover:text-orange-500">
+                          <img className="w-4" src={assets.logout_icon} alt="" />
+                          <p className="">Logout</p>
+                        </li>
+                      </ul>
+                    </div>
+
+        }
+        
+      </div>
       
     </div>
   );
