@@ -4,14 +4,14 @@ import { StoreContext } from '../context/StoreContext'
 
 const FoodItem = ({id, name, price, description, image}) => {
 
-  const {cartItems, addToCart, removeFromCart} = useContext(StoreContext)
+  const {cartItems, addToCart, removeFromCart, url} = useContext(StoreContext)
 
   return (
     <div 
       className='w-[100%] m-auto rounded-md shadow-lg transition duration-300 ease-in-out animate-fadeIn '
       >
       <div className='relative'>
-        <img src={image} alt="" className='w-[100%] rounded-t-md'/>
+        <img src={url +"/images/"+image} alt="" className='w-[100%] rounded-t-md'/>
         {
           !cartItems[id] ? 
             <img 
