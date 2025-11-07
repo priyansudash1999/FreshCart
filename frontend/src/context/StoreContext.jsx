@@ -22,8 +22,11 @@ const StoreContextProvider = (props) => {
     }
   }
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = async(itemId) => {
     setCartItems(prev => ({...prev, [itemId]: prev[itemId]-1}))
+    if(token){
+      await axios.post(url + "/api/cart/remove", {itemId}, {headers: {token}})
+    }
   }
 
   const getCartTotal = () => {
@@ -44,11 +47,16 @@ const StoreContextProvider = (props) => {
     setFoodList(res.data.data)
   }
 
+  const load_cart_data = async (token) => {
+    const res = await axios.post(url + "/api/cart/get", {}, {headers: {token}})
+    setCartItems(res.data.cartData)
+  }
   useEffect(() => { 
     async function loadData(){
       await load_food_list()
       if(localStorage.getItem("TOKEN")){
         setToken(localStorage.getItem("TOKEN"))
+        await load_cart_data(localStorage.getItem("TOKEN"))
       }
     }
     loadData()
