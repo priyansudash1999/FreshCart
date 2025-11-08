@@ -12,7 +12,7 @@ const Navbar = ({setShowLogin}) => {
     setToken("")
     navigate("/")
   }
-
+  
   return (
     <div className="flex justify-between items-center py-5 px-6 bg-white shadow-sm">
       {/* Logo */}
