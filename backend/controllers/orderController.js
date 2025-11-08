@@ -102,4 +102,38 @@ const user_orders = async(req, res) => {
   }
 }
 
-export {placeOrder, verify_order, user_orders}
+// Listing orders for admin panel
+const list_orders = async(req, res) => {
+  try {
+    const orders = await orderModel.find({})
+    res.json({
+      success: true,
+      data: orders
+    })
+  } catch (error) {
+    console.error(error);
+    res.json({
+      success: false,
+      message: "Error while getting list of orders"
+    })
+  }
+}
+
+// update delivery status
+const update_delivery_status = async(req, res) => {
+  try {
+    await orderModel.findByIdAndUpdate(req.body.orderId, {status: req.body.status})
+    res.json({
+      success: true,
+      message: "Status Updated"
+    })
+  } catch (error) {
+    console.error(error)
+    res.json({
+      success: false,
+      message: "Error While update delivery status"
+    })
+  }
+}
+
+export {placeOrder, verify_order, user_orders, list_orders, update_delivery_status}
