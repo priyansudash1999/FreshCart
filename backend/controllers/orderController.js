@@ -58,4 +58,48 @@ const placeOrder = async (req, res) => {
   }
 };
 
-export {placeOrder}
+const verify_order = async (req, res) => {
+  const {orderId, success} = req.body
+  try {
+    if(success === 'true'){
+      await orderModel.findByIdAndUpdate(orderId, {payment: true})
+      res.json({
+        success: true,
+        message: "Payment Successful"
+      })
+    }
+    else{
+      await orderModel.findByIdAndDelete(orderId, {payment: true})
+      res.json({
+        success: false,
+        message: "Payment Not Success"
+      })
+    }
+  } catch (error) {
+    console.error(error);
+    res.json({
+      success: false,
+      message: "Error"
+    })
+  }
+}
+
+const user_orders = async(req, res) => {
+  try {
+    const orders = await orderModel.find({userId: req.userId}) // req.body.userId
+    res.json({
+      success: true,
+      data: orders
+    })
+
+  } catch (error) {
+    console.error(error);
+    res.json({
+      success: false,
+      message: "Error in getting user orders"
+    })
+
+  }
+}
+
+export {placeOrder, verify_order, user_orders}

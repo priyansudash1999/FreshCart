@@ -1,10 +1,12 @@
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import { StoreContext } from '../context/StoreContext'
 import { useState } from 'react'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const Placeholder = () => {
   const {getCartTotal, token, food_list, cartItems, url} = useContext(StoreContext) 
+  const navigate = useNavigate()
 
   const [data, setData] = useState({
     firstName: "",
@@ -54,6 +56,15 @@ const Placeholder = () => {
       alert("Error")
     }
   }
+
+  useEffect(() => {
+    if(!token){
+      navigate("/cart")
+    }
+    else if(getCartTotal() === 0){
+      navigate("/cart")
+    }
+  }, [token])
 
   return (
     

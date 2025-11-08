@@ -6,11 +6,11 @@ import { StoreContext } from "../context/StoreContext";
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home");
   const {getCartTotal, token, setToken} = useContext(StoreContext)
-  const naviagate = useNavigate()
+  const navigate = useNavigate()
   const logout = () => {
     localStorage.removeItem('TOKEN')
     setToken("")
-    naviagate("/")
+    navigate("/")
   }
 
   return (
@@ -71,7 +71,7 @@ const Navbar = ({setShowLogin}) => {
                         outline-2 outline-white
                         list-none
                       ">
-                        <li className="flex items-center justify-center gap-2 cursor-pointer hover:text-orange-500">
+                        <li  onClick={() => navigate("/myorders")} className="flex items-center justify-center gap-2 cursor-pointer hover:text-orange-500">
                           <img className="w-4" src={assets.bag_icon} alt="" />
                           <p className="">Orders</p>
                         </li>

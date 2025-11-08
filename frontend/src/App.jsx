@@ -5,6 +5,8 @@ import Home from './pages/Home.jsx'
 import Cart from './pages/Cart.jsx'
 import Placeholder from './pages/Placeholder.jsx'
 import LoginPopup from './components/LoginPopup.jsx'
+import Verify from './pages/Verify.jsx'
+import MyOrders from './pages/MyOrders.jsx'
 
 const App = () => {
   const [showLogin, setShowLogin] = React.useState(false)
@@ -18,6 +20,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<Placeholder />} />
+          <Route path='/verify' element={<Verify />}/>
+          <Route path='/myorders' element = {<MyOrders />} />
         </Routes>
       </div>
 
